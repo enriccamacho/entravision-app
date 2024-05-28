@@ -119,12 +119,11 @@ export class CompetitionsImportComponent implements OnInit {
           this.competitionOptions = this.competitionOptions.filter(option => !codesToRemove.includes(option));
         },
         error: (error) => {
-          console.log("Ha ocurrido un error al obtener los datos");
+          console.log("Error fetchin data:", error);
         }
       });
-    } catch (err) {
-      console.log(err);
-      console.log("Ha ocurrido un error al obtener los datos");
+    } catch (error) {
+      console.log("Error fetchin data:", error);
     }
   }
 
@@ -141,11 +140,11 @@ export class CompetitionsImportComponent implements OnInit {
         },
         error: (error) => {
           this.importing = false
-          console.log("Ha ocurrido un error al obtener los datos");
+          console.log("Error fetchin data:", error);
         }
       });
-    } catch (err) {
-      console.log("Ha ocurrido un error al obtener los datos");
+    } catch (error) {
+      console.log("Error fetchin data:", error);
     }
   }
 

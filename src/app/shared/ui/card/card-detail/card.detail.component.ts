@@ -67,8 +67,8 @@ export class CardDetailComponent implements OnInit, OnDestroy{
           }
         });
       }
-    } catch (err) {
-      console.log("An error occurred during initialization:", err);
+    } catch (error) {
+      console.log("An error occurred during initialization:", error);
     }
   }
 

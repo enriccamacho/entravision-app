@@ -130,11 +130,11 @@ export class TeamsListComponent implements OnInit {
           this.competitions = data;
         },
         error: (error) => {
-          console.log("Ha ocurrido un error al obtener los datos");
+          console.log("Error fetchin data:", error);
         }
       });
-    } catch (err) {
-      console.log("Ha ocurrido un error al obtener los datos");
+    } catch (error) {
+      console.log("Error fetchin data:", error);
     }
   }
 
@@ -155,11 +155,11 @@ export class TeamsListComponent implements OnInit {
           this.data = data;
         },
         error: (error) => {
-          console.log("Ha ocurrido un error al obtener los datos");
+          console.log("Error fetchin data:", error);
         }
       });
-    } catch (err) {
-      console.log("Ha ocurrido un error al obtener los datos");
+    } catch (error) {
+      console.log("Error fetchin data:", error);
     }
   }
 
@@ -178,11 +178,11 @@ export class TeamsListComponent implements OnInit {
           this.data = [...this.data, ...data];
         },
         error: (error) => {
-          console.log("Ha ocurrido un error al obtener los datos");
+          console.log("Error fetchin data:", error);
         }
       });
-    } catch (err) {
-      console.log("Ha ocurrido un error al obtener los datos");
+    } catch (error) {
+      console.log("Error fetchin data:", error);
     }
   }
 
