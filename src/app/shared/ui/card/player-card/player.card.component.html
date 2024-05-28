@@ -1,0 +1,13 @@
+  <mat-card *ngIf="item" class="fancy-card">
+    <mat-card-header class="image-container">
+      <h1 *ngIf="item.shirtNumber" class="shirt-number">{{ item.shirtNumber }}</h1>
+      <h1 *ngIf="!item.shirtNumber" class="shirt-number">N/A</h1>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="header-text-content">
+            <mat-card-title class="header-text-value">{{ item.name | truncate:22  }}</mat-card-title>
+            <mat-card-subtitle class="header-text-value">{{ item.position }}</mat-card-subtitle>
+        </div>
+    </mat-card-content>
+  </mat-card>
+  

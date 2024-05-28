@@ -1,0 +1,60 @@
+<div class="container" (click)="closeDialog($event)">
+  <mat-card *ngIf="item" class="fancy-card" (click)="stopPropagation($event)">
+    <mat-card-header class="image-container">
+      <img [src]="item.crest" alt="{{ item.name }} Image" />
+    </mat-card-header>
+    <mat-card-content>
+      <div class="header-text-content">
+        <mat-card-title class="header-text-value">{{
+          item.name
+        }}</mat-card-title>
+        <mat-card-subtitle class="header-text-value">{{
+          item.founded 
+        }}</mat-card-subtitle>
+      </div>
+      <p>
+        <span class="field-value">{{ item.tla }}</span>
+      </p>
+      <div class="fieldsContainer">
+      <div class="leftFieldsContainer">
+        <p>
+          <span class="field-label">Club colors: </span>
+          <span class="field-value"
+            >{{ item.clubColors  }}</span
+          >
+        </p>
+      </div>
+      <div class="rightFieldsContainer">
+        <div>
+          <button class="button-website" (click)="openWebsite()" type="button">
+            Visit website
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="players-container" *ngIf="players">
+
+      <span class="field-label">Goalkeepers: </span>
+      <p *ngFor="let player of goalkeepers">
+        <span class="field-value">{{player.shirtNumber || 'N/A'}} </span>
+        <span class="field-value">{{player.name}} </span>
+      </p>
+      <span class="field-label">Defences: </span>
+      <p *ngFor="let player of defences">
+        <span class="field-value">{{player.shirtNumber || 'N/A'}} </span>
+        <span class="field-value">{{player.name}} </span>
+      </p>
+      <span class="field-label">Midfields: </span>
+      <p *ngFor="let player of midfields">
+        <span class="field-value">{{player.shirtNumber || 'N/A'}} </span>
+        <span class="field-value">{{player.name}} </span>
+      </p>
+      <span class="field-label">Offences: </span>
+      <p *ngFor="let player of offences">
+        <span class="field-value">{{player.shirtNumber || 'N/A'}} </span>
+        <span class="field-value">{{player.name}} </span>
+      </p>
+    </div>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,128 @@
+.container {
+    width: 100vw; 
+    height: 100vh; 
+    background-color: rgba(51, 51, 51, 0.3); 
+    position: fixed; 
+    top: 56;
+    left: 0; 
+    z-index: 1000; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fancy-card {
+    width: 700px;
+    max-height: 80vh;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow-y:auto;
+    background-color: #fff;
+
+}
+
+.fancy-card::-webkit-scrollbar {
+    width: 8px; 
+    background-color: transparent; 
+
+  }
+
+.fancy-card::-webkit-scrollbar-thumb {
+    border-radius: 8px; 
+  }
+  
+
+.mat-card-header, .mat-mdc-card-header {
+    display: flex;
+    align-items: center;
+    padding: 0px;
+}
+
+.image-container {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 50%;
+
+    img {
+        width: 100%;
+        height: 100%;
+        margin-top: 12px;
+        object-fit: contain;
+        max-height: 180px;
+    }
+}
+
+.header-text-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.header-text-value {
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 8px;
+    color: #333;
+    text-transform: uppercase;
+}
+
+.mat-card-content {
+    padding: 16px;
+    background-color: #fff;
+    border-top: 1px solid #eee;
+
+
+}
+.fieldsContainer{
+    display:flex;
+    flex-direction: row;
+
+}
+.leftFieldsContainer, .rightFieldsContainer{
+    width:50%;
+}
+ .rightFieldsContainer{
+    display: flex;
+    justify-content: flex-end
+
+}
+p {
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.field-label {
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 8px;
+    color: #333;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.field-value {
+    font-weight: normal;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.button-website {
+    margin-top: 10px; 
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--primary-color);
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .button-website:hover {
+    background-color: var(--primary-color-light);
+  }
+
+  .players-container {
+    margin-top: 12px;
+  }

@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+// App Colors
+:root {
+    --primary-color: #a83352;
+    --primary-color-light: #b87587;
+    --secondary-color: #007bff;
+}
+
+// Import external stylesheets
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import '@fortawesome/fontawesome-free/css/all.css';
+
+// Body styles
+body {
+margin: 0;
+font-family: sans-serif;
+}

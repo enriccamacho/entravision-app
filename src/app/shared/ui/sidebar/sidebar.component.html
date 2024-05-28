@@ -1,0 +1,38 @@
+<div class="container" [class.is-mobile]="mobileQuery.matches">
+  <div class="header" #header>
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon *ngIf="!sidenav?.opened">menu</mat-icon>
+      <mat-icon *ngIf="sidenav?.opened">close</mat-icon>
+    </button>
+    <div>
+      <h1 class="app-name">FutData</h1>
+    </div>
+  </div>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav
+      [opened]="false"
+      #snav
+      [mode]="mobileQuery.matches ? 'over' : 'over'"
+      [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56"
+      [ngClass]="
+        mobileQuery.matches ? 'mat-sidenav-mobile' : 'mat-sidenav-standard'
+      "
+    >
+      <mat-nav-list>
+        @for (nav of fillerNav; track nav) {
+        <div (click)="redirectPage(nav.route)" class="sidebar-item">
+            <div *ngIf="!mobileQuery.matches" class="icon-container">
+                <i [ngClass]="nav.icon"></i>
+            </div>
+            <a [ngClass]="{ 'a-mobile': mobileQuery.matches }" class="title">{{ nav?.name }}</a>
+        </div>
+        }
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <ng-content></ng-content>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

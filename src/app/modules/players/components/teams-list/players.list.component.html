@@ -1,0 +1,75 @@
+<div
+  [ngClass]="
+    !data || data.length === 0 ? 'list-container-empty' : 'list-container'
+  "
+>
+  <form
+    (submit)="getData()"
+    [ngClass]="mobileQuery.matches ? 'form-mobile' : 'form'"
+    [formGroup]="form"
+  >
+    <div class="form-row">
+      <div class="form-group">
+        <select
+          id="type-input"
+          class="form-select"
+          (change)="updateCompetition($event)"
+          formControlName="competition"
+        >
+          <option value="" disabled selected>Select a competition</option>
+          <option *ngFor="let option of competitions" [value]="option.code">
+            {{ option.name }}
+          </option>
+        </select>
+        <select
+          *ngIf="form.valid"
+          id="type-input"
+          class="form-select"
+          (change)="updateTeam($event)"
+          formControlName="team"
+        >
+          <option value="" disabled selected>Select a Team</option>
+          <option *ngFor="let option of teams" [value]="option.tla">
+            {{ option.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="div-buttons">
+      <button
+        type="submit"
+        [disabled]="!form.valid || importing"
+        class="btn btn-success float-right"
+      >
+        Filter
+      </button>
+    </div>
+  </form>
+
+  <div *ngIf="importing" class="spinner"></div>
+
+  <div *ngIf="(!data || data.length === 0) && !importing" class="empty-state">
+    <div>
+      <i class="fa-solid fa-person"></i>
+    </div>
+    <div>
+      <h1>Empty</h1>
+    </div>
+    <div>You have to select a competition in order to see it's players.</div>
+  </div>
+  <div
+    *ngIf="data && data.length > 0 && !importing"
+    class="card-list-container"
+  >
+    <app-player-card *ngFor="let item of data" [item]="item"></app-player-card>
+  </div>
+  <button
+  *ngIf="!pageEnded && data && data.length > 0"
+  type="button"
+  (click)="getNextPage()"
+  class="btn btn-success float-right button-margin-top"
+>
+  Load more
+</button>
+</div>
