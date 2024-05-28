@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TeamCardComponent } from './team-card/team.card.component';
 import { MatCardModule } from '@angular/material/card';
-import { SharedModule } from '../../shared.module';
 import { PlayerCardComponent } from './player-card/player.card.component';
 import { CardDetailComponent } from './card-detail/card.detail.component';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 /**
  * Module for managing card-related functionality.
@@ -17,7 +17,7 @@ import { CardDetailComponent } from './card-detail/card.detail.component';
   imports: [
     CommonModule,
     MatCardModule,
-    SharedModule
+    MatDialogModule
   ]
 })
 export class CardModule { }

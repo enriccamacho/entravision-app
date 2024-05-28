@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Inject, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Inject, OnDestroy, OnInit, Optional, Output } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { IPlayer } from 'src/app/interfaces/IPlayer';
@@ -23,17 +23,15 @@ export class CardDetailComponent implements OnInit, OnDestroy{
   //Event emitter for opening the card.
   @Output() onOpenCard = new EventEmitter<void>();
   //Array of players in the team.
-  players: IPlayer[] = []
+  public players: IPlayer[] = []
   //Array of goalkeepers in the team.
-  goalkeepers: IPlayer[] = []
+  public goalkeepers: IPlayer[] = []
   //Array of defenders in the team.
-  defences: IPlayer[] = []
+  public defences: IPlayer[] = []
   //Array of midfielders in the team.
-  midfields: IPlayer[] = []
+  public midfields: IPlayer[] = []
   //Array of forwards in the team.
-  offences: IPlayer[] = []
-  //Flag indicating the visibility of additional details.
-  detailsVisible = false;
+  public offences: IPlayer[] = []
   //Subscription for fetching player data.
   private playersSubscription: Subscription = new Subscription();
 
@@ -45,8 +43,8 @@ export class CardDetailComponent implements OnInit, OnDestroy{
    * @param teamsService Service for fetching team data.
    */
   constructor(
-    @Inject(MAT_DIALOG_DATA) data:{item:ITeam}
-    , private dialogRef: MatDialogRef<CardDetailComponent>,
+    public dialogRef: MatDialogRef<CardDetailComponent>,
+    @Optional() @Inject(MAT_DIALOG_DATA) data:{item:ITeam}, 
     private teamsService: TeamsService) {
       this.item= data?.item
 }
@@ -57,22 +55,21 @@ export class CardDetailComponent implements OnInit, OnDestroy{
    * @returns {Promise<void>} A Promise that resolves after initialization.
    */
   async ngOnInit(): Promise<void> {
-    try{
-      if(this.item){
-      this.playersSubscription = this.teamsService.getPlayers(this.item.tla).subscribe({
-        next: (data) => {
-          this.players = data;
-          this.setPlayersCategory()
-        },
-        error: (error) => {
-          console.log("Ha ocurrido un error al obtener los datos");
-        }
-      });
+    try {
+      if (this.item) {
+        this.playersSubscription = this.teamsService.getPlayers(this.item.tla).subscribe({
+          next: (data) => {
+            this.players = data;
+            this.setPlayersCategory();
+          },
+          error: (error) => {
+            console.log("Error fetching player data:", error);
+          }
+        });
+      }
+    } catch (err) {
+      console.log("An error occurred during initialization:", err);
     }
-    }catch(err){
-      throw err
-    }
-
   }
 
   /**

@@ -24,7 +24,7 @@ export const routes: Routes = [
  * @class AppModule
  */
   @NgModule({
-    imports: [RouterModule.forRoot(routes), CommonModule, CoreModule, SharedModule, MatSidenavModule, BrowserModule,BrowserAnimationsModule],
+    imports: [RouterModule.forRoot(routes), CommonModule, SharedModule, CoreModule, MatSidenavModule, BrowserModule,BrowserAnimationsModule],
     exports: [RouterModule],
     declarations: [ AppComponent ],
     bootstrap: [ AppComponent ]

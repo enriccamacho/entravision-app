@@ -29,8 +29,8 @@ export class HomeComponent implements OnDestroy {
    * @param media MediaMatcher service to match media queries.
    */
   constructor( 
-    private changeDetectorRef: ChangeDetectorRef,
-    private router: Router,
+    public changeDetectorRef: ChangeDetectorRef,
+    public router: Router,
     private media: MediaMatcher
     ) {
     this.mobileQuery = this.media.matchMedia('(max-width: 600px)');

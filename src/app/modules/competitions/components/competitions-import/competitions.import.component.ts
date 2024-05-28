@@ -123,6 +123,7 @@ export class CompetitionsImportComponent implements OnInit {
         }
       });
     } catch (err) {
+      console.log(err);
       console.log("Ha ocurrido un error al obtener los datos");
     }
   }

@@ -10,7 +10,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import {  ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { TruncatePipe } from './pipes/truncate.pipe';
 import { MatCardModule } from '@angular/material/card';
 
 /**
@@ -19,11 +18,10 @@ import { MatCardModule } from '@angular/material/card';
  * @class SharedModule
  */
 @NgModule({
-  declarations: [ SidebarComponent, TruncatePipe],
+  declarations: [ SidebarComponent],
   exports: [
     CommonModule, 
-    SidebarComponent,
-    TruncatePipe
+    SidebarComponent
   ],
   imports: [
     CommonModule,
