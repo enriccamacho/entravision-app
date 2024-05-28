@@ -13,7 +13,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { MatCardModule } from '@angular/material/card';
 
-
+/**
+ * Module for managing shared-related functionality.
+ * 
+ * @class SharedModule
+ */
 @NgModule({
   declarations: [ SidebarComponent, TruncatePipe],
   exports: [

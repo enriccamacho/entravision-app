@@ -9,6 +9,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 
+// Define application routes
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'competitions', loadChildren: () => import('./modules/competitions/competitions.module').then(m => m.CompetitionsModule) },
@@ -16,6 +17,12 @@ export const routes: Routes = [
     { path: 'players', loadChildren: () => import('./modules/players/players.module').then(m => m.PlayersModule) }
 
   ];
+  
+/**
+ * Main module of the application.
+ * 
+ * @class AppModule
+ */
   @NgModule({
     imports: [RouterModule.forRoot(routes), CommonModule, CoreModule, SharedModule, MatSidenavModule, BrowserModule,BrowserAnimationsModule],
     exports: [RouterModule],

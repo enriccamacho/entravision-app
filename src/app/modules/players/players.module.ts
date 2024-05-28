@@ -8,7 +8,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PlayersListComponent } from './components/teams-list/players.list.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-
+/**
+ * Module for managing player-related functionality.
+ * 
+ * @class PlayersModule
+ */
 @NgModule({
   declarations: [PlayersListComponent],
   exports:[PlayersListComponent],

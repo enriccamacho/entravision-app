@@ -8,7 +8,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CompetitionsImportComponent } from './components/competitions-import/competitions.import.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-
+/**
+ * Module for managing competitions-related features and components.
+ * 
+ * @class CompetitionsModule
+ */
 @NgModule({
   declarations: [CompetitionsImportComponent],
   exports:[CompetitionsImportComponent],

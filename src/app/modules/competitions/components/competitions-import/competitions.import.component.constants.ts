@@ -1,3 +1,8 @@
+/**
+ * Array containing information about avalible competitions.
+ * 
+ * @constant Competitions
+ */
 export const Competitions = [
     { code: "CL", name: "Champions League" },
     { code: "BL1", name: "Bundesliga" },

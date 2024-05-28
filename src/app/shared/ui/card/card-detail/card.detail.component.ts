@@ -3,25 +3,47 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { IPlayer } from 'src/app/interfaces/IPlayer';
 import { ITeam } from 'src/app/interfaces/ITeam';
-import { TeamsService } from 'src/app/modules/teams/services/event/teams.service';
+import { TeamsService } from 'src/app/modules/teams/services/teams/teams.service';
 
-
+/**
+ * Component for displaying detailed information about a team in a dialog.
+ * 
+ * @class CardDetailComponent
+ * @implements {OnInit}
+ * @implements {OnDestroy}
+ */
 @Component({
   selector: 'app-card-detail',
   templateUrl: './card.detail.component.html',
   styleUrl: './card.detail.component.scss'
 })
 export class CardDetailComponent implements OnInit, OnDestroy{
+  //The team item to display details for.
   item: ITeam | undefined; 
+  //Event emitter for opening the card.
   @Output() onOpenCard = new EventEmitter<void>();
+  //Array of players in the team.
   players: IPlayer[] = []
+  //Array of goalkeepers in the team.
   goalkeepers: IPlayer[] = []
+  //Array of defenders in the team.
   defences: IPlayer[] = []
+  //Array of midfielders in the team.
   midfields: IPlayer[] = []
+  //Array of forwards in the team.
   offences: IPlayer[] = []
+  //Flag indicating the visibility of additional details.
   detailsVisible = false;
+  //Subscription for fetching player data.
   private playersSubscription: Subscription = new Subscription();
 
+  /**
+   * Constructor of the CardDetailComponent.
+   * 
+   * @param data The data containing the team item.
+   * @param dialogRef Reference to the dialog.
+   * @param teamsService Service for fetching team data.
+   */
   constructor(
     @Inject(MAT_DIALOG_DATA) data:{item:ITeam}
     , private dialogRef: MatDialogRef<CardDetailComponent>,
@@ -29,6 +51,11 @@ export class CardDetailComponent implements OnInit, OnDestroy{
       this.item= data?.item
 }
 
+  /**
+   * Lifecycle hook that is called after data-bound properties of a directive are initialized.
+   * 
+   * @returns {Promise<void>} A Promise that resolves after initialization.
+   */
   async ngOnInit(): Promise<void> {
     try{
       if(this.item){
@@ -48,6 +75,9 @@ export class CardDetailComponent implements OnInit, OnDestroy{
 
   }
 
+  /**
+   * Sets the category of players based on their position.
+   */
   setPlayersCategory() {
     this.players.forEach(player => {
         switch (player.section) {
@@ -70,25 +100,36 @@ export class CardDetailComponent implements OnInit, OnDestroy{
     });
 }
 
-
+  /**
+   * Lifecycle hook that is called when the component is destroyed.
+   */
   ngOnDestroy(): void {
     this.playersSubscription?.unsubscribe();
   }
 
+  /**
+   * Closes the dialog when clicking outside the dialog content.
+   * 
+   * @param {MouseEvent} event The mouse event.
+   */
   closeDialog(event: MouseEvent): void {
     if (event.target === event.currentTarget) { 
       this.dialogRef.close(); 
     }
   }
 
+  /**
+   * Stops the event propagation.
+   * 
+   * @param {MouseEvent} event The mouse event.
+   */
   stopPropagation(event: MouseEvent): void {
     event.stopPropagation(); 
   }
 
-  toggleDetails() {
-    this.detailsVisible = !this.detailsVisible;
-  }
-
+  /**
+   * Opens the team's website in a new tab.
+   */
   openWebsite() {
     window.open(this.item?.website, "_blank");
     }

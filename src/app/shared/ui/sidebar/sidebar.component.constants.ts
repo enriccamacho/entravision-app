@@ -1,3 +1,6 @@
+/**
+ * Array containing tab information including name, route, and icon.
+ */
 export const TABS = [
     {
         "name": "Home",

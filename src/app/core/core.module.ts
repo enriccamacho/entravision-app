@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './components/home/home.component';
 import { SharedModule } from '../shared/shared.module';
-import { CardModule } from '@ui';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-
-
+/**
+ * Core module of the application, containing core components and dependencies.
+ * 
+ * @class CoreModule
+ */
 @NgModule({
   declarations: [
     HomeComponent

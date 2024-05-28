@@ -6,8 +6,11 @@ import { SharedModule } from '../../shared.module';
 import { PlayerCardComponent } from './player-card/player.card.component';
 import { CardDetailComponent } from './card-detail/card.detail.component';
 
-
-
+/**
+ * Module for managing card-related functionality.
+ * 
+ * @class CardModule
+ */
 @NgModule({
   declarations: [TeamCardComponent, PlayerCardComponent, CardDetailComponent],
   exports: [TeamCardComponent, PlayerCardComponent, CardDetailComponent],
